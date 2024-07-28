@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree</title>
+    <link rel="stylesheet" href="tree.css">
+</head>
+<body>
+    <div class="container">
+        <form class="tree-form" id="treeForm">
+            <h1>Enter Number of Trees</h1>
+            <label for="treeCount">Number of Trees:</label>
+            <input type="number" id="treeCount" name="treeCount" min="1" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div class="result" id="result">
+            <h2>Results</h2>
+            <p id="nitrogen">N: </p>
+            <p id="phosphorus">P: </p>
+            <p id="potassium">K: </p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('treeForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const treeCount = document.getElementById('treeCount').value;
+
+    if (treeCount && treeCount > 0) {
+       
+        const nitrogen = (treeCount * 600)/1000;
+        const phosphorus = (treeCount * 500)/1000; 
+        const potassium = (treeCount * 1200)/1000; 
+
+        document.getElementById('nitrogen').textContent = `N: ${nitrogen} Kg`;
+        document.getElementById('phosphorus').textContent = `P: ${phosphorus} Kg`;
+        document.getElementById('potassium').textContent = `K: ${potassium} Kg`;
+
+        document.getElementById('result').style.display = 'block';
+    } else {
+        alert('Please enter a valid number of trees.');
+    }
+});
+    </script>
+</body>
+</html>
